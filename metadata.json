@@ -1,0 +1,6 @@
+{
+  "name": "Sielska Ostoja",
+  "description": "Luksusowe, całoroczne domki w sercu Beskidów (Brenna). Oaza ciszy, spokoju i skandynawskiego designu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
