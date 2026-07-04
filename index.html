@@ -295,19 +295,19 @@
       background: var(--primary);
       width: 0%;
       z-index: 1100;
-      transition: width 0.1s ease;
+      pointer-events: none;
     }
 
     /* Scroll Reveal Animations */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translate3d(0, 30px, 0);
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
 
     /* Stagger Delays */
@@ -400,23 +400,19 @@
 
     /* CSS ONLY BURGER MENU FOR MOBILE */
     .menu-toggle {
-      display: none;
+      display: none !important;
     }
 
     .burger-label {
       display: none;
       cursor: pointer;
-      flex-direction: column;
-      gap: 6px;
-      padding: 0.5rem;
-      z-index: 1001;
     }
 
     .burger-line {
       width: 24px;
       height: 2px;
       background: var(--primary);
-      transition: var(--transition);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
 
     /* HERO SECTION */
@@ -1071,13 +1067,19 @@
         padding: 6rem 0;
       }
 
+      header {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(249, 249, 251, 0.98) !important;
+      }
+
       .header-container {
         height: 5rem;
       }
 
       /* Reduce reveal movement for lighter animations on mobile */
       .reveal {
-        transform: translateY(15px);
+        transform: translate3d(0, 15px, 0);
         transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
@@ -1119,12 +1121,15 @@
       /* MOBILE MENU LOGIC WITH CHECKBOX */
       .burger-label {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
         z-index: 1002;
         width: 44px;
         height: 44px;
-        align-items: center;
-        justify-content: center;
         margin-right: -0.5rem;
+        cursor: pointer;
       }
 
       .nav-links {
@@ -1173,15 +1178,16 @@
       }
 
       .menu-toggle:checked ~ .burger-label .burger-line:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+        transform: translateY(7px) rotate(45deg);
       }
 
       .menu-toggle:checked ~ .burger-label .burger-line:nth-child(2) {
         opacity: 0;
+        transform: scale(0);
       }
 
       .menu-toggle:checked ~ .burger-label .burger-line:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-7px) rotate(-45deg);
       }
 
       .hero-buttons {
