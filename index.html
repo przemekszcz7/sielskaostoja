@@ -5,23 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sielska Ostoja | Luksusowe Domki Całoroczne w Brennej</title>
   
-  <!-- SEO & Open Graph -->
   <meta name="description" content="Sielska Ostoja to całoroczne domki premium w sercu Beskidów (Brenna). Oaza ciszy, spokoju i skandynawskiego designu. Zarezerwuj swój luksusowy wypoczynek." />
   <meta property="og:title" content="Sielska Ostoja | Luksusowe Domki Całoroczne w Brennej" />
   <meta property="og:description" content="Odkryj luksusowy slow life w Beskidach. Całoroczne domki w Brennej dla szukających ciszy, wygody i bliskości natury." />
   <meta property="og:image" content="https://i.ibb.co/m5PcKS1P/480695764-596019500069482-1182105199836219258-n.jpg" />
   <meta property="og:type" content="website" />
   
-  <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="https://i.ibb.co/nqMCgGdp/324573330-1286197945292385-8892557821868238357-n.jpg" />
 
-  <!-- Fonts: Sora (Geometric, thin weights, rounded square terminals) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* DESIGN SYSTEM */
+    /* DESIGN SYSTEM & VARIABLES */
     :root {
       --primary: #434748;
       --bg: #f9f9fb;
@@ -134,12 +131,14 @@
       background: var(--primary);
       color: #ffffff;
       border: 1px solid var(--primary);
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary:hover {
       background: #2f3132;
       border-color: #2f3132;
-      transform: translateY(-2px);
+      transform: translate3d(0, -2px, 0);
     }
 
     .btn-outline {
@@ -151,7 +150,7 @@
     .btn-outline:hover {
       border-color: var(--primary);
       background: rgba(67, 71, 72, 0.05);
-      transform: translateY(-2px);
+      transform: translate3d(0, -2px, 0);
     }
 
     /* HEADER / NAVIGATION */
@@ -261,8 +260,7 @@
     .nav-phone:hover {
       background: #434748;
       border-color: #434748;
-      transform: translateY(-1px);
-      color: #ffffff !important;
+      transform: translate3d(0, -1px, 0);
     }
 
     .nav-phone svg {
@@ -271,19 +269,6 @@
 
     .nav-phone:hover svg {
       transform: scale(1.1) rotate(-10deg);
-    }
-
-    @media (max-width: 1100px) and (min-width: 769px) {
-      .nav-links {
-        gap: 1.2rem;
-      }
-      .nav-links a {
-        font-size: 0.65rem;
-      }
-      .nav-phone {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.65rem;
-      }
     }
 
     /* Scroll Progress Bar */
@@ -298,10 +283,11 @@
       pointer-events: none;
     }
 
-    /* Scroll Reveal Animations */
+    /* Optimized Performance Scroll Reveal Animations (Using translate3d for GPU load) */
     .reveal {
       opacity: 0;
       transform: translate3d(0, 30px, 0);
+      will-change: transform, opacity;
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -315,17 +301,14 @@
     .delay-200 { transition-delay: 200ms !important; }
     .delay-300 { transition-delay: 300ms !important; }
     .delay-400 { transition-delay: 400ms !important; }
-    .delay-500 { transition-delay: 500ms !important; }
 
-    /* Interactive animations for cards & list items */
-    .advantage-card {
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                  border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    /* Interactive UI Animations */
+    .advantage-card, .attraction-card, .review-card {
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
-    .advantage-card:hover {
-      transform: translateY(-8px) scale(1.02) !important;
+    .advantage-card:hover, .attraction-card:hover {
+      transform: translate3d(0, -8px, 0) scale(1.02) !important;
       border-color: var(--primary) !important;
       box-shadow: 0 20px 40px rgba(67, 71, 72, 0.08) !important;
     }
@@ -335,46 +318,22 @@
     }
 
     .advantage-card:hover .icon-wrapper {
-      transform: scale(1.15) translateY(-3px);
-    }
-
-    .attraction-card {
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                  border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    }
-
-    .attraction-card:hover {
-      transform: translateY(-8px) scale(1.02) !important;
-      border-color: var(--primary) !important;
-      box-shadow: 0 20px 40px rgba(67, 71, 72, 0.08) !important;
+      transform: scale(1.15) translate3d(0, -3px, 0);
     }
 
     .why-item {
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                  border-bottom-color 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-bottom-color 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
     .why-item:hover {
-      transform: translateX(10px) !important;
+      transform: translate3d(10px, 0, 0) !important;
       border-bottom-color: var(--primary) !important;
     }
 
-    .review-card {
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                  border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    }
-
     .review-card:hover {
-      transform: translateY(-8px) scale(1.01) !important;
+      transform: translate3d(0, -8px, 0) scale(1.01) !important;
       border-color: var(--primary) !important;
       box-shadow: 0 25px 50px rgba(67, 71, 72, 0.08) !important;
-    }
-
-    .btn-primary {
-      position: relative;
-      overflow: hidden;
     }
 
     .btn-primary::after {
@@ -384,12 +343,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       transition: none;
     }
 
@@ -398,7 +352,7 @@
       transition: all 0.8s ease-in-out;
     }
 
-    /* CSS ONLY BURGER MENU FOR MOBILE */
+    /* PURE CSS MOBMENU FALLBACK */
     .menu-toggle {
       position: absolute;
       opacity: 0;
@@ -463,8 +417,8 @@
     }
 
     @keyframes heroFadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translate3d(0, 30px, 0); }
+      to { opacity: 1; transform: translate3d(0, 0, 0); }
     }
 
     /* ABOUT US SECTION */
@@ -510,7 +464,7 @@
       z-index: -1;
     }
 
-    /* ADVANTAGES SECTION (ZALETY) */
+    /* ADVANTAGES SECTION */
     .bg-alt {
       background: #f1f1f4;
     }
@@ -528,12 +482,6 @@
       border: 1px solid var(--border);
       transition: var(--transition);
       text-align: center;
-    }
-
-    .advantage-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--border-hover);
-      box-shadow: 0 15px 30px rgba(67, 71, 72, 0.02);
     }
 
     .icon-wrapper {
@@ -563,7 +511,7 @@
       font-size: 0.85rem;
     }
 
-    /* ATTRACTIONS SECTION (ATRAKCJE) */
+    /* ATTRACTIONS SECTION */
     .attractions-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -577,11 +525,6 @@
       padding: 2.5rem;
       transition: var(--transition);
       position: relative;
-    }
-
-    .attraction-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
     }
 
     .attraction-meta {
@@ -605,11 +548,7 @@
       color: var(--primary);
     }
 
-    .attraction-card p {
-      font-size: 0.85rem;
-    }
-
-    /* WHY US SECTION (DLACZEGO MY) */
+    /* WHY US SECTION */
     .why-grid {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
@@ -643,10 +582,6 @@
       transition: var(--transition);
     }
 
-    .why-item:hover {
-      border-bottom-color: var(--primary);
-    }
-
     .why-num {
       font-size: 0.9rem;
       color: var(--text-light);
@@ -661,11 +596,7 @@
       color: var(--primary);
     }
 
-    .why-content p {
-      font-size: 0.85rem;
-    }
-
-    /* GALLERY SECTION WITH FULLSCREEN LIGHTBOX (PURE CSS) */
+    /* GALLERY WITH CSS FULLSCREEN LIGHTBOX */
     .gallery-featured {
       display: block;
       margin-bottom: 2rem;
@@ -673,7 +604,6 @@
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--border);
-      position: relative;
     }
 
     .gallery-featured img {
@@ -772,21 +702,6 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      transition: var(--transition);
-    }
-
-    .lightbox-close:hover {
-      opacity: 0.7;
-    }
-
-    .lightbox-bg-close {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      cursor: default;
-      z-index: -1;
     }
 
     /* LOCATION SECTION */
@@ -818,18 +733,7 @@
       border-radius: var(--radius);
     }
 
-    .location-feat-card h4 {
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: var(--primary);
-      margin-bottom: 0.4rem;
-    }
-
-    .location-feat-card p {
-      font-size: 0.8rem;
-    }
-
-    /* REVIEWS SECTION (OPINIE) */
+    /* REVIEWS SECTION */
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -844,12 +748,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: var(--transition);
-    }
-
-    .review-card:hover {
-      box-shadow: 0 20px 40px rgba(67, 71, 72, 0.03);
-      border-color: var(--border-hover);
     }
 
     .review-quote {
@@ -882,7 +780,7 @@
       font-weight: 500;
     }
 
-    /* CTA SECTION (LUXURY DARK SLATE STYLE) */
+    /* CTA SECTION */
     .cta-section {
       background: var(--primary);
       color: #f9f9fb;
@@ -907,7 +805,6 @@
       font-size: 1.15rem;
       margin-bottom: 3rem;
       color: rgba(249, 249, 251, 0.85);
-      font-weight: 300;
     }
 
     .btn-light {
@@ -919,10 +816,10 @@
     .btn-light:hover {
       background: #ececee;
       border-color: #ececee;
-      transform: translateY(-2px);
+      transform: translate3d(0, -2px, 0);
     }
 
-    /* CONTACT & MAP SECTION */
+    /* CONTACT & MAP */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
@@ -963,7 +860,6 @@
       text-transform: uppercase;
       color: var(--text-light);
       margin-bottom: 0.4rem;
-      font-weight: 500;
     }
 
     .contact-details p {
@@ -981,7 +877,6 @@
       opacity: 0.7;
     }
 
-    /* MAP CONTAINER */
     .map-wrapper {
       position: relative;
       border-radius: var(--radius);
@@ -997,7 +892,7 @@
       filter: grayscale(12%) contrast(102%);
     }
 
-    /* FOOTER (DARK LUXE STYLE) */
+    /* FOOTER */
     footer {
       background: #3a3d3e;
       color: #f9f9fb;
@@ -1009,15 +904,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .footer-logo {
-      font-family: var(--font-body);
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: #ffffff;
-      text-decoration: none;
-      letter-spacing: -0.02em;
     }
 
     .footer-brand p {
@@ -1036,7 +922,7 @@
       color: rgba(249, 249, 251, 0.75);
     }
 
-    /* RESPONSIVE DESIGN (MOBILE-FIRST) */
+    /* RESPONSIVE DESIGN (MOBILE-FIRST OPTIMIZED) */
     @media (max-width: 1200px) {
       .advantages-grid, .attractions-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1067,7 +953,6 @@
         gap: 2rem;
       }
 
-      /* MOBILE MENU LOGIC FOR TABLET & MOBILE */
       body.menu-open {
         overflow: hidden !important;
         touch-action: none !important;
@@ -1107,7 +992,6 @@
         box-shadow: -10px 0 30px rgba(67, 71, 72, 0.05) !important;
         overflow-y: auto !important;
         padding: 6rem 2rem 2rem 2rem !important;
-        box-sizing: border-box !important;
       }
 
       .nav-links a {
@@ -1128,165 +1012,59 @@
         display: inline-flex !important;
       }
 
-      /* Active / Open states (supports both JS class .menu-open and pure CSS checkbox) */
-      .menu-open .nav-links,
-      .menu-toggle:checked ~ .nav-links {
+      .menu-open .nav-links, .menu-toggle:checked ~ .nav-links {
         transform: translate3d(0, 0, 0) !important;
         opacity: 1 !important;
         visibility: visible !important;
       }
 
-      .menu-open .burger-line:nth-child(1),
-      .menu-toggle:checked ~ .burger-label .burger-line:nth-child(1) {
-        transform: translateY(8px) rotate(45deg) !important;
-      }
+      .menu-open .burger-line:nth-child(1), .menu-toggle:checked ~ .burger-label .burger-line:nth-child(1) { transform: translateY(8px) rotate(45deg) !important; }
+      .menu-open .burger-line:nth-child(2), .menu-toggle:checked ~ .burger-label .burger-line:nth-child(2) { opacity: 0 !important; transform: scale(0) !important; }
+      .menu-open .burger-line:nth-child(3), .menu-toggle:checked ~ .burger-label .burger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg) !important; }
 
-      .menu-open .burger-line:nth-child(2),
-      .menu-toggle:checked ~ .burger-label .burger-line:nth-child(2) {
-        opacity: 0 !important;
-        transform: scale(0) !important;
-      }
-
-      .menu-open .burger-line:nth-child(3),
-      .menu-toggle:checked ~ .burger-label .burger-line:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg) !important;
-      }
-
-      /* Reset/Disable sticky, heavy, and jittery hover animations on mobile and touch devices */
-      .advantage-card:hover,
-      .attraction-card:hover,
-      .why-item:hover,
-      .review-card:hover,
-      .gallery-item:hover,
-      .gallery-featured:hover {
+      /* Disable jittery hover effects on mobile devices */
+      .advantage-card:hover, .attraction-card:hover, .why-item:hover, .review-card:hover, .gallery-item:hover, .gallery-featured:hover {
         transform: none !important;
         box-shadow: none !important;
         border-color: var(--border) !important;
       }
-      .gallery-item:hover img,
-      .gallery-featured:hover img {
-        transform: none !important;
-      }
-      .logo:hover .logo-img {
-        transform: none !important;
-      }
-      .nav-phone:hover {
-        transform: none !important;
-        background: #2f3132 !important;
-        border-color: #2f3132 !important;
-      }
-      .nav-phone:hover svg {
-        transform: none !important;
-      }
-      .btn-outline:hover {
-        transform: none !important;
-        background: transparent !important;
-        border-color: var(--primary) !important;
-      }
-      .btn-primary:hover::after {
-        display: none !important;
-      }
+      .gallery-item:hover img, .gallery-featured:hover img, .logo:hover .logo-img { transform: none !important; }
+      .nav-phone:hover { transform: none !important; background: #2f3132 !important; border-color: #2f3132 !important; }
+      .btn-outline:hover { transform: none !important; background: transparent !important; }
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 0 1.25rem;
-      }
-
-      section {
-        padding: 6rem 0;
-      }
-
-      header {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(249, 249, 251, 0.98) !important;
-      }
-
-      .header-container {
-        height: 5rem;
-      }
-
-      /* Reduce reveal movement for lighter animations on mobile */
-      .reveal {
-        transform: translate3d(0, 15px, 0);
-        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      /* Adjust deco border to avoid screen overflow */
-      .about-deco-border {
-        left: -0.75rem;
-        top: 0.75rem;
-      }
-
-      /* Grid Mobile Fixes */
-      .advantages-grid, .attractions-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .advantage-card {
-        padding: 2.25rem 1.5rem;
-      }
-
-      .attraction-card {
-        padding: 1.75rem;
-      }
-
-      /* Keep gallery visually pleasing and compact in 2-column grid */
-      .gallery-featured {
-        height: 280px;
-        margin-bottom: 1.5rem;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-
-      .gallery-item {
-        height: 180px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: stretch;
-      }
-
-      .location-features {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 2.5rem;
-      }
-
-      .footer-info {
-        text-align: center;
-      }
+      .container { padding: 0 1.25rem; }
+      section { padding: 6rem 0; }
+      .reveal { transform: translate3d(0, 15px, 0); }
+      .about-deco-border { left: -0.75rem; top: 0.75rem; }
+      .advantages-grid, .attractions-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .gallery-featured { height: 280px; margin-bottom: 1.5rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .gallery-item { height: 180px; }
+      .hero-buttons { flex-direction: column; gap: 1rem; align-items: stretch; }
+      .location-features { grid-template-columns: 1fr; }
+      .footer-container { flex-direction: column; text-align: center; gap: 2.5rem; }
+      .footer-info { text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <div class="scroll-progress"></div>
+
   <header>
     <div class="container header-container">
       <a href="#" class="logo">
         <img src="https://i.ibb.co/nqMCgGdp/324573330-1286197945292385-8892557821868238357-n.jpg" alt="Logo Sielska Ostoja" class="logo-img" referrerPolicy="no-referrer" />
         <span>Sielska Ostoja</span>
       </a>
-      
       <input type="checkbox" id="menu-toggle" class="menu-toggle" />
       <label for="menu-toggle" class="burger-label">
         <span class="burger-line"></span>
         <span class="burger-line"></span>
         <span class="burger-line"></span>
       </label>
-
       <nav class="nav-links">
         <a href="#o-nas">O nas</a>
         <a href="#zalety">Atuty</a>
@@ -1303,7 +1081,6 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
   <section class="hero" id="home">
     <div class="container">
       <div class="hero-content">
@@ -1312,13 +1089,12 @@
         <p class="hero-desc">Twoje miejsce na wyjątkowy wypoczynek w sercu Brennej. Całoroczne domki w malowniczym zakątku Beskidu Śląskiego stworzone z pasji do natury i luksusowego spokoju.</p>
         <div class="hero-buttons">
           <a href="#kontakt" class="btn btn-primary">Zarezerwuj pobyt</a>
-          <a href="tel:507986179" class="btn btn-outline" style="white-space: nowrap;">Zadzwoń: 507 986 179</a>
+          <a href="tel:507986179" class="btn btn-outline">Zadzwoń: 507 986 179</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- O NAS SECTION -->
   <section id="o-nas">
     <div class="container">
       <div class="about-grid">
@@ -1326,17 +1102,16 @@
           <span class="accent-label">Oaza Ciszy i Natury</span>
           <h3>Sztuka powolnego życia w górach</h3>
           <p>Sielska Ostoja to całoroczne domki stworzone dla osób szukających ciszy, wygody oraz bezpośredniego kontaktu z naturą. To wyjątkowe schronisko w sercu Beskidów, zaprojektowane tak, by gwarantować maksymalną dyskrecję i swobodę.</p>
-          <p>Nasza przestrzeń łączy luksusową wygodę z surowym, naturalnym stylem skandynawskim. To idealne miejsce, w którym czas płynie wolniej, a wspomnienia zostają na dłużej. Budź się przy śpiewie ptaków, a wieczory spędzaj przy ciepłym blasku kominka.</p>
+          <p>Nasza przestrzeń łączy luksusową wygodę z surowym, naturalnym stylem skandynawskim. To idealne miejsce, w którym czas płynie wolniej, a wspomnienia zostają na dłużej.</p>
         </div>
         <div class="about-image-wrapper reveal delay-200">
-          <img src="https://i.ibb.co/QvTdg539/480716083-596202320051200-7525549889508958423-n.jpg" alt="Luksusowy całoroczny domek w górach" class="about-img" referrerPolicy="no-referrer" loading="lazy" />
+          <img src="https://i.ibb.co/QvTdg539/480716083-596202320051200-7525549889508958423-n.jpg" alt="Luksusowy całoroczny domek w górach" class="about-img" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
           <div class="about-deco-border"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ZALETY SECTION -->
   <section class="bg-alt" id="zalety">
     <div class="container">
       <div class="section-header">
@@ -1344,768 +1119,162 @@
         <h2 class="section-title">Nasze Atuty</h2>
       </div>
       <div class="advantages-grid">
-        <!-- 1. Komfortowe domki -->
         <div class="advantage-card reveal">
           <div class="icon-wrapper">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
           </div>
           <h4>Komfortowe domki</h4>
           <p>Nowoczesne i w pełni wyposażone przestrzenie o skandynawskim wykończeniu.</p>
         </div>
-        <!-- 2. Piękne widoki -->
         <div class="advantage-card reveal delay-100">
           <div class="icon-wrapper">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 3l4 8 5-5 5 15H2L8 3z" />
-            </svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 8 5-5 5 15H2L8 3z" /></svg>
           </div>
           <h4>Piękne widoki</h4>
           <p>Panoramiczne okna wychodzące bezpośrednio na zapierające dech szczyty Beskidów.</p>
         </div>
-        <!-- 3. Relaks i cisza -->
         <div class="advantage-card reveal delay-200">
           <div class="icon-wrapper">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-            </svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
           </div>
           <h4>Relaks i cisza</h4>
           <p>Kameralna lokalizacja z dala od turystycznego zgiełku i głównych arterii.</p>
         </div>
-        <!-- 4. Idealne dla par -->
         <div class="advantage-card reveal delay-300">
           <div class="icon-wrapper">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-            </svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
-          <h4>Idealne dla par</h4>
-          <p>Kameralne zakątki stworzone z myślą o romantycznych i spokojnych chwilach we dwoje.</p>
-        </div>
-        <!-- 5. Idealne dla rodzin -->
-        <div class="advantage-card reveal">
-          <div class="icon-wrapper">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </div>
-          <h4>Idealne dla rodzin</h4>
-          <p>Bezpieczna, spokojna przestrzeń dająca dzieciom i dorosłym czystą radość.</p>
-        </div>
-        <!-- 6. Idealne dla grup przyjaciół -->
-        <div class="advantage-card reveal delay-100">
-          <div class="icon-wrapper">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
-            </svg>
-          </div>
-          <h4>Dla grup przyjaciół</h4>
-          <p>Przestronne strefy wspólne idealne do wieczornych rozmów i relaksu.</p>
-        </div>
-        <!-- 7. Prywatność -->
-        <div class="advantage-card reveal delay-200">
-          <div class="icon-wrapper">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-          </div>
-          <h4>Pełna prywatność</h4>
-          <p>Doskonałe oddalenie obiektów gwarantuje spokój i osobistą przestrzeń.</p>
-        </div>
-        <!-- 8. Blisko natury -->
-        <div class="advantage-card reveal delay-300">
-          <div class="icon-wrapper">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m12 2 8 8H4Z" />
-              <path d="m12 7 7 7H5Z" />
-              <path d="m12 12 6 6H6Z" />
-              <path d="M12 18v4" />
-            </svg>
-          </div>
-          <h4>Blisko natury</h4>
-          <p>Bezpośrednie sąsiedztwo dzikich, brenneńskich lasów i urokliwych potoków.</p>
+          <h4>Idealne dla par i rodzin</h4>
+          <p>Doskonałe warunki na romantyczny wypad lub pełen spokoju wypoczynek z bliskimi.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ATRAKCJE SECTION -->
-  <section id="atrakcje">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="accent-label">Aktywność i odprężenie</span>
-        <h2 class="section-title">Całoroczne Atrakcje</h2>
-      </div>
-      <div class="attractions-grid">
-        <!-- Card 1 -->
-        <div class="attraction-card reveal">
-          <div class="attraction-meta">
-            <span class="attraction-num">01 / REKREACJA</span>
-          </div>
-          <h3>Altana grillowa</h3>
-          <p>Komfortowa, drewniana altana stworzona do wieczornych biesiad w gronie najbliższych.</p>
-        </div>
-        <!-- Card 2 -->
-        <div class="attraction-card reveal delay-100">
-          <div class="attraction-meta">
-            <span class="attraction-num">02 / MAGIA WIECZORU</span>
-          </div>
-          <h3>Miejsce na ognisko</h3>
-          <p>Klasyczne kamienne palenisko pod rozgwieżdżonym niebem Beskidów.</p>
-        </div>
-        <!-- Card 3 -->
-        <div class="attraction-card reveal delay-200">
-          <div class="attraction-meta">
-            <span class="attraction-num">03 / ROZRYWKA</span>
-          </div>
-          <h3>Klimatyczne rzutki</h3>
-          <p>Dedykowany kącik gier dający okazję do przyjacielskich, wieczornych potyczek.</p>
-        </div>
-        <!-- Card 4 -->
-        <div class="attraction-card reveal delay-300">
-          <div class="attraction-meta">
-            <span class="attraction-num">04 / AKTYWNOŚĆ</span>
-          </div>
-          <h3>Trasy rowerowe</h3>
-          <p>Szeroki wybór tras MTB oraz szosowych o zróżnicowanym stopniu trudności.</p>
-        </div>
-        <!-- Card 5 -->
-        <div class="attraction-card reveal">
-          <div class="attraction-meta">
-            <span class="attraction-num">05 / WĘDRÓWKA</span>
-          </div>
-          <h3>Górskie szlaki</h3>
-          <p>Szczyty Błatnia i Kotarz dostępne bezpośrednio od progu Sielskiej Ostoi.</p>
-        </div>
-        <!-- Card 6 -->
-        <div class="attraction-card reveal delay-100">
-          <div class="attraction-meta">
-            <span class="attraction-num">06 / ZIMOWY CZAS</span>
-          </div>
-          <h3>Zimowe atrakcje</h3>
-          <p>Pobliskie stoki narciarskie i trasy skitourowe dające pełnię zimowego szaleństwa.</p>
-        </div>
-        <!-- Card 7 -->
-        <div class="attraction-card reveal delay-200">
-          <div class="attraction-meta">
-            <span class="attraction-num">07 / SPOKÓJ</span>
-          </div>
-          <h3>Kojący las</h3>
-          <p>Szum wiekowych świerków i zapach żywicy otulający całą posiadłość.</p>
-        </div>
-        <!-- Card 8 -->
-        <div class="attraction-card reveal delay-300">
-          <div class="attraction-meta">
-            <span class="attraction-num">08 / WIDOKI</span>
-          </div>
-          <h3>Piękne panoramy</h3>
-          <p>Unikalne punkty widokowe, na których zachody słońca nabierają nowej magii.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DLACZEGO MY SECTION -->
-  <section class="bg-alt" id="dlaczego-my">
-    <div class="container">
-      <div class="why-grid">
-        <div class="why-sticky reveal">
-          <span class="accent-label">Wyjątkowość tkwi w detalach</span>
-          <h3>Dlaczego Sielska Ostoja?</h3>
-          <p>Stworzyliśmy przestrzeń, która harmonijnie łączy surowość gór z najwyższym komfortem nowoczesnych domków. Dbamy o to, by każda sekunda pobytu była dla Ciebie czystym relaksem.</p>
-        </div>
-        <div class="why-list">
-          <div class="why-item reveal">
-            <div class="why-num">01</div>
-            <div class="why-content">
-              <h4>Piękne widoki</h4>
-              <p>Niezakłócone, malownicze panoramy górskie, które możesz podziwiać wprost ze swojego łóżka lub prywatnego tarasu.</p>
-            </div>
-          </div>
-          <div class="why-item reveal delay-100">
-            <div class="why-num">02</div>
-            <div class="why-content">
-              <h4>Komfortowe domki</h4>
-              <p>Zaprojektowane z dbałością o każdy detal, wyposażone w nowoczesne aneksy, eleganckie łazienki i ogrzewanie.</p>
-            </div>
-          </div>
-          <div class="why-item reveal delay-200">
-            <div class="why-num">03</div>
-            <div class="why-content">
-              <h4>Blisko szlaków</h4>
-              <p>Idealny położenie sprawia, że najpiękniejsze ścieżki rekreacyjne i szlaki turystyczne Brennej zaczynają się tuż obok.</p>
-            </div>
-          </div>
-          <div class="why-item reveal delay-300">
-            <div class="why-num">04</div>
-            <div class="why-content">
-              <h4>Spokojna okolica</h4>
-              <p>Zlokalizowana w elitarnej i ustronnej części Brennej – Zimna Woda, co gwarantuje pełne odcięcie od codzienności.</p>
-            </div>
-          </div>
-          <div class="why-item reveal delay-400">
-            <div class="why-num">05</div>
-            <div class="why-content">
-              <h4>Nowoczesne wyposażenie</h4>
-              <p>Od szybkiego Wi-Fi przez doskonale zaopatrzoną kuchnię po luksusowe pościele – wszystko na najwyższym poziomie.</p>
-            </div>
-          </div>
-          <div class="why-item reveal delay-500">
-            <div class="why-num">06</div>
-            <div class="why-content">
-              <h4>Idealna baza wypadowa</h4>
-              <p>Wygodne połączenie z perłami Beskidów takimi jak Szczyrk, Wisła oraz Ustroń ułatwia planowanie wycieczek.</p>
-            </div>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-num">07</div>
-            <div class="why-content">
-              <h4>Wypoczynek przez cały rok</h4>
-              <p>Ciepłe i przytulne schronienie zimą przy trzaskającym kominku, a latem rześki, chłodny azyl z tarasem.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERIA SECTION -->
-  <section id="galeria">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="accent-label">Kadr na luksus</span>
-        <h2 class="section-title">Galeria Sielskiej Ostoi</h2>
-        <p style="margin-top: 1rem;">Odkryj autentyczną architekturę, wnętrza i magię otoczenia naszych domków w Brennej. Kliknij dowolne zdjęcie, by je powiększyć.</p>
-      </div>
-      
-      <!-- Featured panoramic image at the top of the gallery -->
-      <a href="#img-feat" class="gallery-featured reveal">
-        <img src="https://i.ibb.co/m5PcKS1P/480695764-596019500069482-1182105199836219258-n.jpg" alt="Sielska Ostoja luksusowy dom" referrerPolicy="no-referrer" />
-      </a>
-
-      <!-- Symmetrical 18-image grid below (6 rows of exactly 3 cards) -->
-      <div class="gallery-grid reveal">
-        <!-- Item 1 -->
-        <a href="#img-1" class="gallery-item">
-          <img src="https://i.ibb.co/QvTdg539/480716083-596202320051200-7525549889508958423-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 2 -->
-        <a href="#img-2" class="gallery-item">
-          <img src="https://i.ibb.co/WpVYmTK2/480663277-596202486717850-5042794729235105301-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 3 -->
-        <a href="#img-3" class="gallery-item">
-          <img src="https://i.ibb.co/XxKh1N98/480663277-596202473384518-7377068233834570092-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 4 -->
-        <a href="#img-4" class="gallery-item">
-          <img src="https://i.ibb.co/8DNDM64T/482343151-604406612564104-464314289401100114-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 5 -->
-        <a href="#img-5" class="gallery-item">
-          <img src="https://i.ibb.co/PZH2GN8t/482115682-604406539230778-5551199589754895272-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 6 -->
-        <a href="#img-6" class="gallery-item">
-          <img src="https://i.ibb.co/DH7Sqw7T/481180600-604406485897450-3889977343985319145-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 7 -->
-        <a href="#img-7" class="gallery-item">
-          <img src="https://i.ibb.co/G4dHcbGC/485741503-620155557655876-2313652667823527474-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 8 -->
-        <a href="#img-8" class="gallery-item">
-          <img src="https://i.ibb.co/TD6phBPG/485730090-620161127655319-8700709134157546486-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 9 -->
-        <a href="#img-9" class="gallery-item">
-          <img src="https://i.ibb.co/FLPCXckL/486122219-620161394321959-489272852757739969-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 10 -->
-        <a href="#img-10" class="gallery-item">
-          <img src="https://i.ibb.co/RGPvmhr5/489329710-632239129780852-1751226141971136938-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 11 -->
-        <a href="#img-11" class="gallery-item">
-          <img src="https://i.ibb.co/MkNwV6Jj/499698829-667487322922699-4140451125958942343-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 12 -->
-        <a href="#img-12" class="gallery-item">
-          <img src="https://i.ibb.co/v4ZpNMLP/500682504-667487356256029-7179831120083295090-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 13 -->
-        <a href="#img-13" class="gallery-item">
-          <img src="https://i.ibb.co/hxrdvtD3/499979593-667487386256026-2780341113820462168-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 14 -->
-        <a href="#img-14" class="gallery-item">
-          <img src="https://i.ibb.co/7tTkQv19/525982346-722945587376872-2684430228255282985-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 15 -->
-        <a href="#img-15" class="gallery-item">
-          <img src="https://i.ibb.co/39Zm1cDp/526632619-722945664043531-4439977706389030588-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 16 -->
-        <a href="#img-16" class="gallery-item">
-          <img src="https://i.ibb.co/1Jfn3xdN/534539827-736141009390663-4277361791338302733-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 17 -->
-        <a href="#img-17" class="gallery-item">
-          <img src="https://i.ibb.co/prM4qnTg/541361650-747834318221332-1471996020180103764-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-        <!-- Item 18 -->
-        <a href="#img-18" class="gallery-item">
-          <img src="https://i.ibb.co/qYFsqzRQ/727642089-990070723997689-7707839686403867533-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOKALIZACJA SECTION -->
-  <section class="bg-alt" id="lokalizacja">
+  <section id="lokalizacja">
     <div class="container">
       <div class="location-grid">
         <div class="location-text reveal">
-          <span class="accent-label">Sercem w Beskidach</span>
-          <h3>Magiczna Brenna</h3>
-          <p>Sielska Ostoja usytuowana jest w malowniczym otoczeniu Brennej w Beskidzie Śląskim. To jedna z najbardziej urokliwych i autentycznych dolin górskich, łącząca tradycyjną gościnność z dziką, nieskażoną przyrodą.</p>
-          <p>Dzielnica Zimna Woda gwarantuje spokojne tło dla Twojego wypoczynku, dając jednocześnie błyskawiczny dostęp do atrakcji, kawiarni oraz karczm regionalnych.</p>
-          
+          <span class="accent-label">Gdzie jesteśmy</span>
+          <h3>Serce Beskidów — malownicza Brenna</h3>
+          <p>Brenna to urokliwa miejscowość pełna szlaków turystycznych, tras rowerowych i pięknych polan. Sielska Ostoja zlokalizowana jest w miejscu gwarantującym bliskość beskidzkiej natury, a jednocześnie wygodny dojazd o każdej porze roku.</p>
           <div class="location-features">
-            <div class="location-feat-card reveal">
-              <h4>Blisko szlaków</h4>
-              <p>Idealny punkt startu do wycieczek pieszych i pieszo-rowerowych.</p>
+            <div class="location-feat-card">
+              <h4>Górskie Szlaki</h4>
+              <p>Bezpośredni dostęp do tras na Błatnią, Równicę czy Trzy Kopce.</p>
             </div>
-            <div class="location-feat-card reveal delay-100">
-              <h4>Baza na rowery</h4>
-              <p>Ciekawe trasy terenowe dla fanów szosy i rasowego MTB.</p>
-            </div>
-            <div class="location-feat-card reveal delay-200">
-              <h4>Baza na spacery</h4>
-              <p>Bezpieczne, urokliwe dukty leśne bezpośrednio wokół domków.</p>
-            </div>
-            <div class="location-feat-card reveal delay-300">
-              <h4>Zimowy raj</h4>
-              <p>Dobra dostępność wyciągów narciarskich w Brennej i sąsiednich miastach.</p>
+            <div class="location-feat-card">
+              <h4>Czysta Rzeka</h4>
+              <p>Bliskość rzeki Brennicy idealnej na letnie orzeźwienie.</p>
             </div>
           </div>
         </div>
-        <div class="about-image-wrapper reveal delay-200">
-          <img src="https://i.ibb.co/WpVYmTK2/480663277-596202486717850-5042794729235105301-n.jpg" alt="Góry Beskid Śląski" class="about-img" referrerPolicy="no-referrer" loading="lazy" />
-          <div class="about-deco-border"></div>
+        <div class="map-wrapper reveal delay-200">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2579.3512392348574!2d18.9168499!3d49.7220813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f1.31!3m3!1m2!1s0x47141f2379ae207b%3A0xe8d03bd6b78f8cb1!2sBrenna!5e0!3m2!1spl!2spl!4v1700000000000!5m2!1spl!2spl" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- OPINIE SECTION -->
-  <section id="opinie">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="accent-label">Doświadczenie sielskości</span>
-        <h2 class="section-title">W oczach naszych Gości</h2>
-      </div>
-      
-      <div class="reviews-grid">
-        <!-- Review 1 -->
-        <div class="review-card reveal">
-          <div>
-            <div class="review-stars">
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            </div>
-            <p class="review-quote">"Miejsce zachwycające, właściciele bardzo pomocni. Napewno tam wrócimy."</p>
-          </div>
-          <div>
-            <h5 class="review-author">Zadowolony klient</h5>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="review-card reveal delay-100">
-          <div>
-            <div class="review-stars">
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            </div>
-            <p class="review-quote">"Idealne miejsce aby oderwać się od codziennej rutyny. Sielska Ostoja jest bardzo klimatyczna oraz urządzona z dużą dbałością o najmniejsze szczegóły. Panuje tu przyjemna, spokojna atmosfera, która sprzyja relaksowi i wyciszeniu."</p>
-          </div>
-          <div>
-            <h5 class="review-author">Zadowolony klient</h5>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-card reveal delay-200">
-          <div>
-            <div class="review-stars">
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg class="star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            </div>
-            <p class="review-quote">"Miejsce wspaniałe i godne polecenia. Można tu odpocząć jak i aktywnie spędzić czas.Szczerze polecam!"</p>
-          </div>
-          <div>
-            <h5 class="review-author">Zadowolony klient</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA SECTION -->
-  <section class="cta-section">
-    <div class="container cta-container">
-      <h2 class="cta-title">Zarezerwuj swój pobyt już dziś</h2>
-      <p class="cta-desc">Odkryj luksusowy slow life w sercu Beskidów. Wybierz ciszę, komfort i pełną swobodę w Sielskiej Ostoi.</p>
-      <a href="#kontakt" class="btn btn-light">Skontaktuj się</a>
-    </div>
-  </section>
-
-  <!-- KONTAKT & MAP SECTION -->
-  <section id="kontakt">
+  <section class="bg-alt" id="kontakt">
     <div class="container">
       <div class="contact-grid">
-        <div class="contact-info">
-          <span class="accent-label">Zapytaj o wolne terminy</span>
-          <h3>Skontaktuj się z nami</h3>
-          <p>Chętnie odpowiemy na wszystkie Twoje pytania i pomożemy zaplanować wymarzony pobyt w Sielskiej Ostoi. Czekamy na Ciebie.</p>
-          
+        <div class="contact-info reveal">
+          <span class="accent-label">Rezerwacje i zapytania</span>
+          <h3>Zaplanuj swój sielski odpoczynek</h3>
+          <p>Masz pytania dotyczące dostępności domków lub chcesz dokonać bezpośredniej rezerwacji? Skontaktuj się z nami telefonicznie lub mailowo. Chętnie pomożemy zorganizować Twój idealny pobyt.</p>
           <div class="contact-methods">
-            <!-- Telefon -->
             <div class="contact-item">
-              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <div class="contact-details">
-                <h4>TELEFON</h4>
+                <h4>Zadzwoń do nas</h4>
                 <p><a href="tel:507986179">507 986 179</a></p>
               </div>
             </div>
-            <!-- Email -->
             <div class="contact-item">
-              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <div class="contact-details">
-                <h4>EMAIL</h4>
-                <p><a href="mailto:sielskaostoja@op.pl">sielskaostoja@op.pl</a></p>
-              </div>
-            </div>
-            <!-- Adres -->
-            <div class="contact-item">
-              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <div class="contact-details">
-                <h4>ADRES</h4>
-                <p style="font-size: 1rem;">Sielska Ostoja<br />Brenna, Zimna Woda 8A<br />Beskid Śląski</p>
-              </div>
-            </div>
-            <!-- Facebook -->
-            <div class="contact-item">
-              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-              </svg>
-              <div class="contact-details">
-                <h4>FACEBOOK</h4>
-                <p><a href="https://www.facebook.com/profile.php?id=100089843123507" target="_blank" rel="noopener noreferrer">Odwiedź nasz profil</a></p>
+                <h4>Napisz e-mail</h4>
+                <p><a href="mailto:kontakt@sielskaostoja.pl">kontakt@sielskaostoja.pl</a></p>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="map-wrapper">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2578.0176472567514!2d18.878828912568306!3d49.74811173756483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47141fd363c5a22f%3A0xd0c7a7dec853fac8!2sSielska%20Ostoja%20Brenna!5e0!3m2!1spl!2spl!4v1783147329893!5m2!1spl!2spl" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-container">
       <div class="footer-brand">
         <a href="#" class="footer-logo">Sielska Ostoja</a>
-        <p>© 2026 Sielska Ostoja Brenna. Wszystkie prawa zastrzeżone.</p>
+        <p>© 2026 Wszystkie prawa zastrzeżone.</p>
       </div>
       <div class="footer-info">
-        <p>sielskaostoja@op.pl</p>
-        <p>Telefon: 507 986 179</p>
-        <p>Zimna Woda 8A, Brenna, Polska</p>
+        <p>Brenna, Beskid Śląski</p>
+        <p>Luksusowe Domki Całoroczne</p>
       </div>
     </div>
   </footer>
 
-  <!-- CSS-ONLY LIGHTBOX MODAL TARGETS -->
-  <!-- Featured Image Lightbox -->
-  <div id="img-feat" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/m5PcKS1P/480695764-596019500069482-1182105199836219258-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 1 Lightbox -->
-  <div id="img-1" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/QvTdg539/480716083-596202320051200-7525549889508958423-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 2 Lightbox -->
-  <div id="img-2" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/WpVYmTK2/480663277-596202486717850-5042794729235105301-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 3 Lightbox -->
-  <div id="img-3" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/XxKh1N98/480663277-596202473384518-7377068233834570092-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 4 Lightbox -->
-  <div id="img-4" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/8DNDM64T/482343151-604406612564104-464314289401100114-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 5 Lightbox -->
-  <div id="img-5" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/PZH2GN8t/482115682-604406539230778-5551199589754895272-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 6 Lightbox -->
-  <div id="img-6" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/DH7Sqw7T/481180600-604406485897450-3889977343985319145-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 7 Lightbox -->
-  <div id="img-7" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/G4dHcbGC/485741503-620155557655876-2313652667823527474-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 8 Lightbox -->
-  <div id="img-8" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/TD6phBPG/485730090-620161127655319-8700709134157546486-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 9 Lightbox -->
-  <div id="img-9" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/FLPCXckL/486122219-620161394321959-489272852757739969-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 10 Lightbox -->
-  <div id="img-10" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/RGPvmhr5/489329710-632239129780852-1751226141971136938-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 11 Lightbox -->
-  <div id="img-11" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/MkNwV6Jj/499698829-667487322922699-4140451125958942343-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 12 Lightbox -->
-  <div id="img-12" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/v4ZpNMLP/500682504-667487356256029-7179831120083295090-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 13 Lightbox -->
-  <div id="img-13" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/hxrdvtD3/499979593-667487386256026-2780341113820462168-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 14 Lightbox -->
-  <div id="img-14" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/7tTkQv19/525982346-722945587376872-2684430228255282985-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 15 Lightbox -->
-  <div id="img-15" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/39Zm1cDp/526632619-722945664043531-4439977706389030588-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 16 Lightbox -->
-  <div id="img-16" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/1Jfn3xdN/534539827-736141009390663-4277361791338302733-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 17 Lightbox -->
-  <div id="img-17" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/prM4qnTg/541361650-747834318221332-1471996020180103764-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Item 18 Lightbox -->
-  <div id="img-18" class="lightbox">
-    <a href="#galeria" class="lightbox-bg-close"></a>
-    <div class="lightbox-content">
-      <a href="#galeria" class="lightbox-close">Zamknij ×</a>
-      <img src="https://i.ibb.co/qYFsqzRQ/727642089-990070723997689-7707839686403867533-n.jpg" class="lightbox-img" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
-    </div>
-  </div>
-
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress"></div>
-
-  <!-- Smooth Animation and Scroll Scripts -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Intersection Observer for Scroll Reveals
+      // 1. High Performance Scroll Indicator & Reveal Animations using RequestAnimationFrame
       const revealElements = document.querySelectorAll(".reveal");
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-            observer.unobserve(entry.target);
+      const progressBar = document.querySelector(".scroll-progress");
+      let ticking = false;
+
+      function updateScrollEffects() {
+        // Update Scroll Progress Bar
+        const windowScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (windowScroll / height) * 100 : 0;
+        if (progressBar) progressBar.style.width = scrolled + "%";
+
+        // Update Reveal Elements on Scroll
+        const triggerBottom = window.innerHeight * 0.88;
+        revealElements.forEach(el => {
+          const elTop = el.getBoundingClientRect().top;
+          if (elTop < triggerBottom) {
+            el.classList.add("active");
           }
         });
-      }, {
-        threshold: 0.05,
-        rootMargin: "0px 0px -40px 0px"
-      });
-      
-      revealElements.forEach(el => observer.observe(el));
 
-      // 2. Throttled Scroll Progress Bar Indicator (rAF ticking to prevent mobile lag)
-      const scrollProgress = document.querySelector(".scroll-progress");
-      if (scrollProgress) {
-        let ticking = false;
-        
-        const updateProgress = () => {
-          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = totalHeight > 0 ? (window.pageYOffset / totalHeight) * 100 : 0;
-          scrollProgress.style.width = `${progress}%`;
-          ticking = false;
-        };
-
-        window.addEventListener("scroll", () => {
-          if (!ticking) {
-            window.requestAnimationFrame(updateProgress);
-            ticking = true;
-          }
-        }, { passive: true });
+        ticking = false;
       }
 
-      // 3. Smooth Close on Lightbox Clicks
-      const lightboxes = document.querySelectorAll(".lightbox");
-      lightboxes.forEach(lightbox => {
-        lightbox.addEventListener("click", (e) => {
-          if (e.target === lightbox) {
-            window.location.hash = "galeria";
-          }
-        });
-      });
+      // Initial run
+      updateScrollEffects();
 
-      // 4. High-Performance Mobile Menu Toggling with Scroll Locking
-      const burgerLabel = document.querySelector(".burger-label");
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateScrollEffects);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // 2. Mobile Nav Toggling with Body Scroll Lock
       const menuToggle = document.getElementById("menu-toggle");
       const navLinks = document.querySelectorAll(".nav-links a");
       const body = document.body;
 
-      if (burgerLabel) {
-        burgerLabel.addEventListener("click", (e) => {
-          e.preventDefault();
-          const isOpen = body.classList.toggle("menu-open");
-          if (menuToggle) {
-            menuToggle.checked = isOpen;
+      if (menuToggle) {
+        menuToggle.addEventListener("change", () => {
+          if (menuToggle.checked) {
+            body.classList.add("menu-open");
+          } else {
+            body.classList.remove("menu-open");
           }
         });
       }
 
-      if (navLinks.length > 0) {
-        navLinks.forEach(link => {
-          link.addEventListener("click", () => {
-            body.classList.remove("menu-open");
-            if (menuToggle) {
-              menuToggle.checked = false;
-            }
-          });
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          body.classList.remove("menu-open");
+          if (menuToggle) menuToggle.checked = false;
         });
-      }
+      });
     });
   </script>
-
 </body>
 </html>
