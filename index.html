@@ -92,6 +92,7 @@
     section {
       padding: 9rem 0;
       position: relative;
+      overflow: hidden;
     }
 
     .section-header {
@@ -1058,12 +1059,57 @@
     }
 
     @media (max-width: 768px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+
       section {
         padding: 6rem 0;
       }
 
       .header-container {
         height: 5rem;
+      }
+
+      /* Reduce reveal movement for lighter animations on mobile */
+      .reveal {
+        transform: translateY(15px);
+        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Adjust deco border to avoid screen overflow */
+      .about-deco-border {
+        left: -0.75rem;
+        top: 0.75rem;
+      }
+
+      /* Grid Mobile Fixes */
+      .advantages-grid, .attractions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .advantage-card {
+        padding: 2.25rem 1.5rem;
+      }
+
+      .attraction-card {
+        padding: 1.75rem;
+      }
+
+      /* Keep gallery visually pleasing and compact in 2-column grid */
+      .gallery-featured {
+        height: 280px;
+        margin-bottom: 1.5rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .gallery-item {
+        height: 180px;
       }
 
       /* MOBILE MENU LOGIC WITH CHECKBOX */
@@ -1107,10 +1153,6 @@
         flex-direction: column;
         gap: 1rem;
         align-items: stretch;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
       }
 
       .location-features {
@@ -1188,7 +1230,7 @@
           <p>Nasza przestrzeń łączy luksusową wygodę z surowym, naturalnym stylem skandynawskim. To idealne miejsce, w którym czas płynie wolniej, a wspomnienia zostają na dłużej. Budź się przy śpiewie ptaków, a wieczory spędzaj przy ciepłym blasku kominka.</p>
         </div>
         <div class="about-image-wrapper reveal delay-200">
-          <img src="https://i.ibb.co/QvTdg539/480716083-596202320051200-7525549889508958423-n.jpg" alt="Luksusowy całoroczny domek w górach" class="about-img" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/QvTdg539/480716083-596202320051200-7525549889508958423-n.jpg" alt="Luksusowy całoroczny domek w górach" class="about-img" referrerPolicy="no-referrer" loading="lazy" />
           <div class="about-deco-border"></div>
         </div>
       </div>
@@ -1453,75 +1495,75 @@
       <div class="gallery-grid reveal">
         <!-- Item 1 -->
         <a href="#img-1" class="gallery-item">
-          <img src="https://i.ibb.co/QvTdg539/480716083-596202320051200-7525549889508958423-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/QvTdg539/480716083-596202320051200-7525549889508958423-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 2 -->
         <a href="#img-2" class="gallery-item">
-          <img src="https://i.ibb.co/WpVYmTK2/480663277-596202486717850-5042794729235105301-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/WpVYmTK2/480663277-596202486717850-5042794729235105301-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 3 -->
         <a href="#img-3" class="gallery-item">
-          <img src="https://i.ibb.co/XxKh1N98/480663277-596202473384518-7377068233834570092-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/XxKh1N98/480663277-596202473384518-7377068233834570092-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 4 -->
         <a href="#img-4" class="gallery-item">
-          <img src="https://i.ibb.co/8DNDM64T/482343151-604406612564104-464314289401100114-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/8DNDM64T/482343151-604406612564104-464314289401100114-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 5 -->
         <a href="#img-5" class="gallery-item">
-          <img src="https://i.ibb.co/PZH2GN8t/482115682-604406539230778-5551199589754895272-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/PZH2GN8t/482115682-604406539230778-5551199589754895272-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 6 -->
         <a href="#img-6" class="gallery-item">
-          <img src="https://i.ibb.co/DH7Sqw7T/481180600-604406485897450-3889977343985319145-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/DH7Sqw7T/481180600-604406485897450-3889977343985319145-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 7 -->
         <a href="#img-7" class="gallery-item">
-          <img src="https://i.ibb.co/G4dHcbGC/485741503-620155557655876-2313652667823527474-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/G4dHcbGC/485741503-620155557655876-2313652667823527474-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 8 -->
         <a href="#img-8" class="gallery-item">
-          <img src="https://i.ibb.co/TD6phBPG/485730090-620161127655319-8700709134157546486-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/TD6phBPG/485730090-620161127655319-8700709134157546486-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 9 -->
         <a href="#img-9" class="gallery-item">
-          <img src="https://i.ibb.co/FLPCXckL/486122219-620161394321959-489272852757739969-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/FLPCXckL/486122219-620161394321959-489272852757739969-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 10 -->
         <a href="#img-10" class="gallery-item">
-          <img src="https://i.ibb.co/RGPvmhr5/489329710-632239129780852-1751226141971136938-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/RGPvmhr5/489329710-632239129780852-1751226141971136938-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 11 -->
         <a href="#img-11" class="gallery-item">
-          <img src="https://i.ibb.co/MkNwV6Jj/499698829-667487322922699-4140451125958942343-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/MkNwV6Jj/499698829-667487322922699-4140451125958942343-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 12 -->
         <a href="#img-12" class="gallery-item">
-          <img src="https://i.ibb.co/v4ZpNMLP/500682504-667487356256029-7179831120083295090-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/v4ZpNMLP/500682504-667487356256029-7179831120083295090-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 13 -->
         <a href="#img-13" class="gallery-item">
-          <img src="https://i.ibb.co/hxrdvtD3/499979593-667487386256026-2780341113820462168-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/hxrdvtD3/499979593-667487386256026-2780341113820462168-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 14 -->
         <a href="#img-14" class="gallery-item">
-          <img src="https://i.ibb.co/7tTkQv19/525982346-722945587376872-2684430228255282985-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/7tTkQv19/525982346-722945587376872-2684430228255282985-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 15 -->
         <a href="#img-15" class="gallery-item">
-          <img src="https://i.ibb.co/39Zm1cDp/526632619-722945664043531-4439977706389030588-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/39Zm1cDp/526632619-722945664043531-4439977706389030588-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 16 -->
         <a href="#img-16" class="gallery-item">
-          <img src="https://i.ibb.co/1Jfn3xdN/534539827-736141009390663-4277361791338302733-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/1Jfn3xdN/534539827-736141009390663-4277361791338302733-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 17 -->
         <a href="#img-17" class="gallery-item">
-          <img src="https://i.ibb.co/prM4qnTg/541361650-747834318221332-1471996020180103764-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/prM4qnTg/541361650-747834318221332-1471996020180103764-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
         <!-- Item 18 -->
         <a href="#img-18" class="gallery-item">
-          <img src="https://i.ibb.co/qYFsqzRQ/727642089-990070723997689-7707839686403867533-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/qYFsqzRQ/727642089-990070723997689-7707839686403867533-n.jpg" alt="Sielska Ostoja" referrerPolicy="no-referrer" loading="lazy" />
         </a>
       </div>
     </div>
@@ -1557,7 +1599,7 @@
           </div>
         </div>
         <div class="about-image-wrapper reveal delay-200">
-          <img src="https://i.ibb.co/WpVYmTK2/480663277-596202486717850-5042794729235105301-n.jpg" alt="Góry Beskid Śląski" class="about-img" referrerPolicy="no-referrer" />
+          <img src="https://i.ibb.co/WpVYmTK2/480663277-596202486717850-5042794729235105301-n.jpg" alt="Góry Beskid Śląski" class="about-img" referrerPolicy="no-referrer" loading="lazy" />
           <div class="about-deco-border"></div>
         </div>
       </div>
@@ -1907,13 +1949,23 @@
       
       revealElements.forEach(el => observer.observe(el));
 
-      // 2. Scroll Progress Bar Indicator
+      // 2. Throttled Scroll Progress Bar Indicator (rAF ticking to prevent mobile lag)
       const scrollProgress = document.querySelector(".scroll-progress");
       if (scrollProgress) {
-        window.addEventListener("scroll", () => {
+        let ticking = false;
+        
+        const updateProgress = () => {
           const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
           const progress = totalHeight > 0 ? (window.pageYOffset / totalHeight) * 100 : 0;
           scrollProgress.style.width = `${progress}%`;
+          ticking = false;
+        };
+
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            window.requestAnimationFrame(updateProgress);
+            ticking = true;
+          }
         }, { passive: true });
       }
 
@@ -1926,6 +1978,17 @@
           }
         });
       });
+
+      // 4. Mobile Menu Auto-Close on navigation click
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.querySelectorAll(".nav-links a");
+      if (menuToggle && navLinks.length > 0) {
+        navLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            menuToggle.checked = false;
+          });
+        });
+      }
     });
   </script>
 
